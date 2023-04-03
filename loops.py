@@ -5,8 +5,11 @@ def square_sum(numbers):
 for x in range(100, 10, -2):
     print("Number x = " + str(x))
 
-for x in range(1, 6):
+for x in range(6):
     print(x)
+    
+#len([ x for x in nums if len(str(x)) % 2 == 0])
+#for x in range(l-1, -1, -1): # В обратном порядке
 
 #WHILE####
 while True:
