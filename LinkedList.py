@@ -42,10 +42,13 @@ class MyLinkedList:
     def get(self, index: int) -> int:
         cur_node = self.head
         if cur_node == None or index < 0: return -1
-        for x in range(index):
-            if cur_node.get_next() == None: return -1
-            else: cur_node = cur_node.get_next()
-        return cur_node.get_data()
+        count = 0
+        while cur_node != None:
+            if count == index:
+                return cur_node.get_data()
+            cur_node = cur_node.get_next()
+            count += 1
+        return -1
 
     def addAtHead(self, val: int) -> None:
         new_node = Node(val)
@@ -78,11 +81,21 @@ class MyLinkedList:
         new_node = Node(val)
         cur_node = self.head
         count = 0
+
+        if index < 0: index = 0
+        if index == 0:
+            self.addAtHead(val)
+            return
+
+        if self.lenght() == index:
+            self.addAtTail(val)
+            return
+        
+        if cur_node == None:
+            return -1
+
         while cur_node.get_next() != None:
-            if index == 0: 
-                self.addAtHead()
-                return
-            elif count + 1 == index:
+            if count + 1 == index:
                 the_node_after_cur = cur_node.get_next()
                 cur_node.set_next(new_node)
                 new_node.set_next(the_node_after_cur)
@@ -94,14 +107,20 @@ class MyLinkedList:
     def deleteAtIndex(self, index: int) -> None:
         cur_node = self.head
         count = 0
+
+        if cur_node == None:
+            return print("Index is not in range")
+
+        if index == 0:
+            self.remove_front()
+            return
+        
         while cur_node.get_next() != None:
-            if index == 0:
-                self.remove_front()
-                return
-            elif count + 1 == index:
+            if count + 1 == index:
                 the_node_to_remove = cur_node.get_next()
                 the_node_after_removed = the_node_to_remove.get_next()
                 cur_node.set_next(the_node_after_removed)
+                return
             count += 1
             cur_node = cur_node.get_next()
         return print("Index is not in range")
@@ -116,3 +135,20 @@ class MyLinkedList:
             prev = cur_node
             cur_node = next
         self.head = prev
+
+
+my_list = MyLinkedList()
+
+my_list.addAtHead(1)
+my_list.addAtTail(2)
+my_list.addAtTail(3)
+my_list.addAtIndex(1,5)
+my_list.lenght()
+my_list.show()
+my_list.get(3)
+my_list.remove_back()
+my_list.show()
+my_list.remove_front()
+my_list.show()
+my_list.deleteAtIndex(1)
+my_list.reverse()
