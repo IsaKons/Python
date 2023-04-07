@@ -1,3 +1,57 @@
+##### No code for that here, just to remember idea of loop inside linkedlist.############
+# 1-2-3-4-5-6-7-8-9->4. - it is our linked list with loop on 4.
+# 1--x--4----y-7--z-->
+
+# So x its the path till loop start.
+# y - its the path, where cur_node will make, before meet node2.
+# z - it is path from meet point till end of loop.
+
+# cur_node will make x+y path and then meet node2
+# node2 will make x+y+z+y path, before meet cur_node
+# In reason that for node2 we have next.next - double speed.
+
+# All educated people also know, that time = distance / speed
+# if time is the same, and we know distance, and we know speed, then -
+# x+y / 1 = x+y+z+y / 2, so we have x = z
+
+# Then, we need to create node3, in moment of meet node2 and cur_node.
+# And in the moment when cur_node finishes full loop, node3 will be on the same place. cur_node will complete Z path, and node3 will complete X path.
+###### No code here for that!! ################################################
+
+######## If need to find connection of two different lists###########
+headB = "head of list1"
+headA = "head of list2"
+while one != two:
+    one = headB if one is None else one.next
+    two = headA if two is None else two.next
+    print(one)
+#####################################################################
+### Check if it is polyndrome, 2 pointers and reverse second part.######
+head = "YUE LINKED LIST"
+if not head:
+    print(True)
+
+cur_node = sec_node = head
+while sec_node and sec_node.next:
+    cur_node = cur_node.next
+    sec_node = sec_node.next.next
+
+past = None
+while cur_node:
+    current = cur_node
+    cur_node = cur_node.next
+    current.next = past
+    past = current
+
+while past:
+    if past.val != head.val:
+        print(False)
+    past = past.next
+    head = head.next
+print(True)
+#########################################################################
+
+
 class Node:
     def __init__(self, data = None, next = None):
         self.data = data
