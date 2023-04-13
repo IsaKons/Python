@@ -18,6 +18,22 @@
 # loop, node3 will be on the same place. cur_node will complete Z path, and node3 will complete X path. ##### No code
 # here for that!!
 
+# Create a dict of Nodex: CopyNodeX, and then copy all parameters
+if head is None: return None
+mapping = {}
+cur = head
+while cur:
+    mapping[cur] = Node(cur.val, None, None)
+    cur = cur.next
+cur = head
+while cur:
+    if cur.next:
+        mapping[cur].next = mapping[cur.next]
+    if cur.random:
+        mapping[cur].random = mapping[cur.random]
+    cur = cur.next
+return mapping[head]
+
 # If need to find connection of two different lists
 headB = "head of list1"
 headA = "head of list2"
@@ -26,7 +42,7 @@ while one != two:
     two = headA if two is None else two.next
     print(one)
 
-# Check if it is polyndrome, 2 pointers and reverse second part.
+# Check if it is palindrome, 2 pointers and reverse second part.
 head = "YUE LINKED LIST"
 if not head:
     print(True)

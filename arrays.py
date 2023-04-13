@@ -41,3 +41,13 @@ for x in range(0, 10):
 all_enemies[5]['health'] = 30
 all_enemies[8]['name'] = "Kozel"
 all_enemies[2]['loc_x'] += 10
+
+# 2d arrays
+# magic, rotate it for 180 and remowe first line
+# zip - make from 123 456 = 14 25 36, *matrix send each x in matrix as argument, ::-1 slicer to get reverse
+matrix = [[1,2,3],[4,5,6],[7,8,9]]
+result = []
+while matrix:
+    result += matrix.pop(0)
+    matrix = (list(zip(*matrix)))[::-1]
+print(result)
