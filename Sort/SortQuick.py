@@ -8,17 +8,7 @@ def quick_sort(lst):
 
 def quick_sort_helper(lst, low, high):
     if low < high:
-        print("#####")
-        print(lst)
-        print(low)
-        print(high)
-        print("#####")
         split_point = partition(lst, low, high)
-        print("*****")
-        print(lst)
-        print(low)
-        print(high)
-        print("*****")
         quick_sort_helper(lst, low, split_point - 1)
         quick_sort_helper(lst, split_point + 1, high)
 
@@ -28,25 +18,16 @@ def partition(lst, low, high):
     left_mark = low + 1
     right_mark = high
     done = False
-    print("begin")
-    print(lst)
-    print(right_mark)
     while not done:
         while left_mark <= right_mark and lst[left_mark] <= pivot_value:
             left_mark += 1
         while right_mark >= left_mark and lst[right_mark] >= pivot_value:
             right_mark -= 1
-
         if right_mark < left_mark:
             done = True
         else:
             lst[left_mark], lst[right_mark] = lst[right_mark], lst[left_mark]
-        print("inside")
-        print(lst)
     lst[low], lst[right_mark] = lst[right_mark], lst[low]
-    print("end")
-    print(lst)
-    print(right_mark)
     return right_mark
 
 

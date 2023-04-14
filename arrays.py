@@ -5,8 +5,10 @@ cities = ['New York', 'Moscow', 'new dehli', 'Simferopol', 'Toronto']
 NewCities = []
 
 mynumber_list = list(range(0, 10))      # Creates array 0-10
-visited = [ [] for _ in range(10)]      # Empty array create
+visited = [[] for _ in range(10)]      # Empty array create
 graph = {key: [] for key in range(10)}  # empty dickt create
+new_list = [[None for _ in range(x+1)] for x in range(numRows)]  # Creade empty 2d matrix
+l[x] = [0] * (i + 1)                    # Create llist inside list
 
 
 sys.argv                                # array of args provided
@@ -18,6 +20,7 @@ del cities[-1]                          # remove by ID
 cities.remove('Tula')                   # remove by name
 cities.reverse()                        # Reverse
 cities[::-1]                            # also reverse and can be done with STR!!
+cities[:] = cities[::-1]                # for cases when need to change inside function and also have change outside
 print(cities[-4:-1])                    # From -4 includet to -1 not includet
 cities.pop(1)                           # Delete and show deleted(can be saved in var)
 NewCities.append(cities.copy())         # Create a COPY of array
